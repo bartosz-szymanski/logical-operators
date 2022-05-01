@@ -14,9 +14,9 @@ const ConstantsProvider = ({ children }: PropsWithChildren<any>) => {
   const addConstant = (constant: Constant) => {
     setConstants((currentState: Constant[]) => [...currentState, constant]);
   };
-  const removeConstant = (index: number) => {
+  const removeConstant = (id: string) => {
     setConstants((currentState: Constant[]) => {
-      return currentState.splice(index, 1);
+      return currentState.filter((constant: Constant) => constant.id !== id);
     })
   }
 

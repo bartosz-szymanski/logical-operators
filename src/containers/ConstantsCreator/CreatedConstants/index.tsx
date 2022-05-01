@@ -4,17 +4,14 @@ import { ConstantsContext } from '../../ConstantsProvider';
 import { Constant } from '../../../types/Argument/Constant';
 import CreatedConstant from './CreatedConstant';
 
-//TODO: After interview add RHF
 const CreatedConstants = () => {
-  const { constants, removeConstant } = useContext(ConstantsContext);
+  const { constants } = useContext(ConstantsContext);
 
   return (
     <Box sx={{ margin: '1rem' }}>
-      {constants.map((constant: Constant, index: number) => (
+      {constants.map((constant: Constant) => (
         <CreatedConstant
-          key={`constant-${index}`}
-          index={index}
-          removeConstant={removeConstant}
+          key={`constant-${constant.id}`}
           {...constant}
         />
       ))

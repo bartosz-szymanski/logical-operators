@@ -8,11 +8,13 @@ export const TRUTHY_VARIABLE: Variable = true;
 export const FALSY_VARIABLE: Variable = false;
 
 export const TRUTHY_CONSTANT: Constant = {
+  id: 'TruthyConstantId',
   name: 'TruthyConstant',
   value: true
 }
 
 export const FALSY_CONSTANT: Constant = {
+  id: 'FalsyConstantId',
   name: 'FalsyConstant',
   value: false
 }

@@ -9,6 +9,16 @@ const NewConstant = () => {
   const [name, setName] = useState<string>('');
   const [value, setValue] = useState<BooleanValues>(BooleanValues.True);
 
+  const onSubmit = () => {
+    addConstant({
+      id: new Date().toISOString(),
+      name,
+      value: getBooleanFromBooleanValues(value)
+    });
+
+    setName('');
+  }
+
   return (
     <Box>
       <TextField
@@ -35,10 +45,7 @@ const NewConstant = () => {
       <Button
         variant="contained"
         disabled={name?.length < 1}
-        onClick={() => addConstant({
-          name,
-          value: getBooleanFromBooleanValues(value)
-        })}
+        onClick={onSubmit}
         sx={{ margin: '0.5rem' }}
       >
         Add

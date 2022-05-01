@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, FormControl, IconButton, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 
 import { BooleanValues } from '../NewConstant/utils';
 import { Constant } from '../../../types/Argument/Constant';
-import { RemoveConstantFn } from '../../ConstantsProvider/types';
+import { ConstantsContext } from '../../ConstantsProvider';
 
-interface Props extends Constant{
-  index: number;
-  removeConstant: RemoveConstantFn
-}
-const CreatedConstant = ({ name, value, index, removeConstant }: Props) => {
-  console.log(index)
+const CreatedConstant = ({ id, name, value }: Constant) => {
+  const { removeConstant } = useContext(ConstantsContext);
+
   return (
     <Box>
       <TextField
@@ -36,9 +33,9 @@ const CreatedConstant = ({ name, value, index, removeConstant }: Props) => {
       </FormControl>
       <IconButton
         color="primary"
-        onClick={() => removeConstant(index)}
+        onClick={() => removeConstant(id)}
       >
-        <Delete />
+        <Delete/>
       </IconButton>
     </Box>
   );
