@@ -1,14 +1,14 @@
 import { Operand } from './Operand';
 import { Argument, SimpleArgument } from './Argument';
 
-export type LogicalExpression = SingleExpression | RegularExpression;
+export type LogicalExpression = SimpleExpression | RegularExpression;
 
-interface RegularExpression {
+export interface RegularExpression {
    operand: Operand;
    arguments: Argument[];
 }
 
-interface SingleExpression {
+export interface SimpleExpression {
   arguments: SimpleArgument;
 }
 
