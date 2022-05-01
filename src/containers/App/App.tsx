@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Box } from '@mui/material';
+import { Box } from '@mui/material';
+
 import LogicalExpressionBuilder from '../LogicalExpressionBuilder';
 import ConstantsCreator from '../ConstantsCreator';
 
