@@ -1,1 +1,4 @@
-export type Constant = { [name: string]: boolean };
+export interface Constant {
+  name: string;
+  value: boolean;
+}

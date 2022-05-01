@@ -4,7 +4,7 @@ import { Argument, SimpleArgument } from './Argument';
 export type LogicalExpression = SingleExpression | RegularExpression;
 
 interface RegularExpression {
-   operator: Operand;
+   operand: Operand;
    arguments: Argument[];
 }
 
