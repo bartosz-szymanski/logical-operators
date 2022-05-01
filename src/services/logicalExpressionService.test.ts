@@ -665,7 +665,7 @@ describe('evaluateLogicalExpression', () => {
     });
 
     test('false for AND operation with one truthy OR operation', () => {
-      const expectedResult = true;
+      const expectedResult = false;
       const logicalExpression: LogicalExpression = {
         operand: Operand.And,
         arguments: [TRUTHY_OR_LOGICAL_EXPRESSION, FALSY_OR_LOGICAL_EXPRESSION]
@@ -677,7 +677,7 @@ describe('evaluateLogicalExpression', () => {
     });
 
     test('false for AND operation with one truthy AND operation', () => {
-      const expectedResult = true;
+      const expectedResult = false;
       const logicalExpression: LogicalExpression = {
         operand: Operand.And,
         arguments: [TRUTHY_AND_LOGICAL_EXPRESSION, FALSY_OR_LOGICAL_EXPRESSION]
@@ -701,7 +701,7 @@ describe('evaluateLogicalExpression', () => {
     });
 
     test('true for OR operation with two falsy nested OR operations and falsy variable', () => {
-      const expectedResult = false;
+      const expectedResult = true;
       const logicalExpression: LogicalExpression = {
         operand: Operand.Or,
         arguments: [FALSY_OR_LOGICAL_EXPRESSION, FALSY_OR_LOGICAL_EXPRESSION, TRUTHY_VARIABLE]
