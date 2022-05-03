@@ -5,6 +5,9 @@ import { FunctionComponent } from 'react';
 import { ArgumentControl, ArgumentValueType, CreationActions, Identity } from './types';
 import { BooleanValues } from '../ConstantsCreator/NewConstant/utils';
 import { Operand } from '../../types/Operand';
+import { convertUIStructureToLogicalExpression } from '../../services/recursiveStructureService';
+import { Constant } from '../../types/Argument/Constant';
+import { evaluateLogicalExpression } from '../../services/logicalExpressionService';
 
 export const CREATION_ACTIONS_CONTROLS_MAP: { [key in CreationActions]: FunctionComponent<any> } = {
   [CreationActions.Variable]: VariableSelector,
@@ -35,3 +38,10 @@ export function getNewActionVariable(): ArgumentControl {
   };
 }
 
+export function getBooleanValue(structure: ArgumentControl, constants: Constant[]): boolean {
+  const mappedStructure = convertUIStructureToLogicalExpression(structure, constants);
+
+  console.log(evaluateLogicalExpression(mappedStructure), mappedStructure)
+
+  return evaluateLogicalExpression(mappedStructure);
+}
