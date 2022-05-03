@@ -18,3 +18,4 @@ export interface ArgumentControl {
 }
 
 export type UpdateStructureFn = (id: Identity, newValue: ArgumentControl) => void;
+export type RemoveFromStructureFn = (id: Identity, structure: ArgumentControl) => void;

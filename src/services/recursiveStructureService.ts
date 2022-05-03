@@ -19,12 +19,39 @@ export function findById(structure: ArgumentControl, id: Identity): ArgumentCont
   return results.filter(Boolean)[0] as ArgumentControl;
 }
 
+function findParentByChildId(structure: ArgumentControl, id: Identity): ArgumentControl {
+  if (structure.arguments?.findIndex((argument: ArgumentControl) => argument.id === id) > -1) {
+    return structure;
+  }
+  const results: (ArgumentControl | undefined)[] = []
+
+  structure?.arguments?.forEach((innerStructure: ArgumentControl) => {
+    results.push(findParentByChildId(innerStructure, id));
+  })
+
+  return results.filter(Boolean)[0] as ArgumentControl;
+}
+
 export function updateStructureById(structure: ArgumentControl, id: Identity, newArgument: ArgumentControl): ArgumentControl {
   const argumentFromStructure = findById(structure, id)
   const currentArgument = JSON.stringify(argumentFromStructure);
   const currentStructure = JSON.stringify(structure);
 
   const newStructure = currentStructure.replace(currentArgument, JSON.stringify(newArgument))
+
+  return JSON.parse(newStructure);
+}
+
+export function removeFromStructureById(structure: ArgumentControl, id: Identity): ArgumentControl {
+  const currentStructure = JSON.stringify(structure);
+  const parent = findParentByChildId(structure, id);
+  const parentToReplace = JSON.stringify(parent);
+  const parentWithoutChild = {
+    ...parent,
+    arguments: parent.arguments.filter((argument: ArgumentControl) => argument.id !== id)
+  };
+
+  const newStructure = currentStructure.replace(parentToReplace, JSON.stringify(parentWithoutChild))
 
   return JSON.parse(newStructure);
 }
