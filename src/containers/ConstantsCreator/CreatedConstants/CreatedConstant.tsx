@@ -7,6 +7,7 @@ import { Constant } from '../../../types/Argument/Constant';
 import { ConstantsContext } from '../../ConstantsProvider';
 import Select from '../../../components/Select';
 
+//TODO: Add possibility of updating name and value
 const CreatedConstant = ({ id, name, value }: Constant) => {
   const { removeConstant } = useContext(ConstantsContext);
 

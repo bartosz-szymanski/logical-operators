@@ -9,7 +9,7 @@ interface Props {
 
 const SectionLayout = ({ label, children }: PropsWithChildren<Props>) => (
   <Box sx={{ margin: '1rem', minHeight: '10rem' }}>
-    <ChipDivider label={label}/>
+    <ChipDivider label={label} />
     <Paper
       elevation={2}
       sx={{

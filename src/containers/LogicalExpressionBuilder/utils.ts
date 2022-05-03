@@ -41,7 +41,5 @@ export function getNewActionVariable(): ArgumentControl {
 export function getBooleanValue(structure: ArgumentControl, constants: Constant[]): boolean {
   const mappedStructure = convertUIStructureToLogicalExpression(structure, constants);
 
-  console.log(evaluateLogicalExpression(mappedStructure), mappedStructure)
-
   return evaluateLogicalExpression(mappedStructure);
 }

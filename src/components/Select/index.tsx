@@ -1,13 +1,12 @@
 import React from 'react';
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
-
 interface Props {
   label: string;
   value: string;
   onChange: (value: any) => void;
   disabled?: boolean;
-  options: string[]
+  options: string[];
 }
 
 const StyledSelect = ({ disabled, label, options, value, onChange }: Props) => (
@@ -22,8 +21,7 @@ const StyledSelect = ({ disabled, label, options, value, onChange }: Props) => (
     >
       {options.map((option: string, index: number) => (
         <MenuItem key={`action-${index}`} value={option}>{option}</MenuItem>
-      ))
-      }
+      ))}
     </Select>
   </FormControl>
 );
