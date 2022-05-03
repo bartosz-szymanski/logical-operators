@@ -41,7 +41,6 @@ const NewConstant = () => {
           <MenuItem value={BooleanValues.False}>False</MenuItem>
         </Select>
       </FormControl>
-
       <Button
         variant="contained"
         disabled={name?.length < 1}
