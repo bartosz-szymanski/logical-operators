@@ -1,14 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import SectionLayout from '../../components/SectionLayout';
 import { ArgumentControl, Identity } from './types';
-import { getBooleanValue, getNewActionVariable } from './utils';
+import { getNewActionVariable } from './utils';
 import NewActionRow from './components/Builder/NewActionRow';
 import { updateStructureById } from '../../services/recursiveStructureService';
-import { ConstantsContext } from '../ConstantsProvider';
+import ResultBar from './components/ResultBar';
 
 const LogicalExpressionBuilder = () => {
-  const { constants } = useContext(ConstantsContext);
   const [structure, setStructure] = useState<ArgumentControl>(() => getNewActionVariable());
 
   const updateArgumentInStructure = (id: Identity, newValue: ArgumentControl) => {
@@ -24,7 +23,7 @@ const LogicalExpressionBuilder = () => {
         updateStructureById={updateArgumentInStructure}
         {...structure}
       />
-      <span>RESULT: {getBooleanValue(structure, constants)?.toString()}</span>
+      <ResultBar structure={structure} />
     </SectionLayout>
   );
 };
