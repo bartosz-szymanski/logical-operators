@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+
 import { Operand } from '../../../../types/Operand';
+import Select from '../../../../components/Select';
 
 interface Props {
   value: Operand;
@@ -8,20 +9,12 @@ interface Props {
 }
 
 const OperationSelector = ({ value, onChange }: Props) => (
-  <FormControl sx={{ width: '10rem', margin: '0.5rem' }} size="small">
-    <InputLabel id="select-label">Operation</InputLabel>
-    <Select
-      labelId="select-label"
-      value={value}
-      label="Operation"
-      onChange={(event: SelectChangeEvent) => onChange(event.target.value as Operand)}
-    >
-      {Object.values(Operand).map((action: string) => (
-        <MenuItem key={`action-${action}`} value={action}>{action}</MenuItem>
-      ))
-      }
-    </Select>
-  </FormControl>
+  <Select
+    label="Operation"
+    value={value}
+    onChange={onChange}
+    options={Object.values(Operand)}
+  />
 );
 
 export default OperationSelector;

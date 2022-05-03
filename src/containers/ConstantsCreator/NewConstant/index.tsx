@@ -1,7 +1,9 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
+
 import { BooleanValues, getBooleanFromBooleanValues } from './utils';
 import { ConstantsContext } from '../../ConstantsProvider';
+import Select from '../../../components/Select';
 
 //TODO: After interview add RHF and make components reusable with styling
 const NewConstant = () => {
@@ -29,18 +31,12 @@ const NewConstant = () => {
         onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setName(event.target.value)}
         sx={{ margin: '0.5rem' }}
       />
-      <FormControl sx={{ width: '10rem', margin: '0.5rem' }} size="small">
-        <InputLabel id="select-label">Value</InputLabel>
-        <Select
-          labelId="select-label"
-          value={value}
-          label="Value"
-          onChange={(event: SelectChangeEvent) => setValue(event.target.value as BooleanValues)}
-        >
-          <MenuItem value={BooleanValues.True}>True</MenuItem>
-          <MenuItem value={BooleanValues.False}>False</MenuItem>
-        </Select>
-      </FormControl>
+      <Select
+        label="Value"
+        value={value}
+        onChange={(value) => setValue(value)}
+        options={Object.values(BooleanValues)}
+      />
       <Button
         variant="contained"
         disabled={name?.length < 1}
